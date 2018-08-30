@@ -4,10 +4,10 @@ using namespace std;
 
 int main(){
     int n, tmp, sum=0;
-    scanf("%d", &n);
+    cin>>n;
     vector<int> a, b;
     for(int i=0;i<n;i++){
-        scanf("%d", &tmp);
+        cin>>tmp;
         a.push_back(tmp);
         sum+=tmp;
     }
@@ -16,10 +16,11 @@ int main(){
         return 0;
     }
     b.resize(sum, -1);
+    for(int i=0;i<n;i++){
+        b[a[i]]=i;
+    }
     while(b[sum/3]==-1){
-        for(int i=sum-1;i>=0;i--){
 
-        }
     }
     return 0;
 }
