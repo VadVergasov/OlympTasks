@@ -11,12 +11,14 @@ int main(){
         a.push_back(tmp);
     }
     sort(a.begin(), a.end());
-    for(int i=0;i<m-n;i++){
-        int mn=1000;
-        for(int j=n;j>0;j++){
-            mn=min(mn, a[i+j]-a[i+j-1]);
-        }
-        b.push_back(mn);
+    if(n==m){
+        cout<<a[a.size()-1]-a[0];
+        return 0;
+    }
+    for(int i=0;i<=m-n;i++){
+        int dif=a[n+i-1]-a[i];
+        //cout<<a[n+i-1]<<" "<<a[i]<<"\n";
+        b.push_back(dif);
     }
     sort(b.begin(), b.end());
     cout<<b[0];
