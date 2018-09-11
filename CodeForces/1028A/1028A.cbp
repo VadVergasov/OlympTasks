@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="1040B" />
+		<Option title="1028A" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/1040B" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/1028A" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/1040B" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/1028A" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -37,10 +37,7 @@
 			<code_completion />
 			<envvars />
 			<debugger />
-<<<<<<< HEAD
 			<lib_finder disable_auto="1" />
-=======
->>>>>>> e56c15af9c6933203c4b4eaca8a8c91e01787612
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

@@ -16,7 +16,7 @@ int main(){
 		a=max(a,p[s[i]]);
 	}
 	int i=0;
-	while (p[s[i]]<a||(t[s[i]]+=x[i])<a){
+	while (p[s[i]]<a or (t[s[i]]+=x[i])<a){
 		i++;
 	}
 	cout<<s[i];

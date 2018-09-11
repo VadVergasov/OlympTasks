@@ -9,6 +9,7 @@ bool cmp(pair<int, vector<int> > a, pair<int, vector<int> > b){
 int main(){
     int n, k;
     cin>>n>>k;
+<<<<<<< HEAD
     vector<pair<int, vector<int> > > a;
     if(k==0){
         cout<<n<<"\n";
@@ -38,6 +39,19 @@ int main(){
             cout<<a[i].second[j]<<" ";
         }
         cout<<"\n";
+=======
+    int it=n/(2*k+1);
+    if(n%(2*k+1)){
+        it++;
+    }
+    cout<<it<<"\n";
+    int step=k+1;
+    if(it*(2*k+1)-k>n){
+        step-=it*(2*k+1)-k-n;
+    }
+    for(int i=0;i<it;i++, step+=(2*k+1)){
+        cout<<step<<" ";
+>>>>>>> e56c15af9c6933203c4b4eaca8a8c91e01787612
     }
     return 0;
 }
