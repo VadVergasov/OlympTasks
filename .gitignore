@@ -1,0 +1,7 @@
+*.cbp
+*.layout
+*.depend
+*.cpp.save
+*.txt
+/bin
+/obj

@@ -3,7 +3,7 @@
 using namespace std;
 
 bool cmp(pair<int, int> a, pair<int, int> b){
-    return a.first<a.second;
+    return a.first<b.first;
 }
 
 int main(){
@@ -16,7 +16,7 @@ int main(){
     }
     sort(a.begin(), a.end(), cmp);
     for(int i=0;i<n;i++){
-        if(s>=a[i].first){
+        if(s>a[i].first){
             s+=a[i].second;
         }else{
             cout<<"NO";
