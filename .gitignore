@@ -5,3 +5,5 @@
 *.txt
 */*/bin
 */*/obj
+*.exe
+*.o
