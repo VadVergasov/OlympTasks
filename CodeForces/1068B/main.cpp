@@ -5,6 +5,14 @@ using namespace std;
 int main(){
     long long b;
     cin>>b;
-    cout<<b;
+    set<long long> c;
+    long long last=0, cur=1;
+    while(last!=1){
+        //cout<<b<<" "<<cur<<" "<<__gcd(b, cur)<<" ";
+        last=b/__gcd(b, cur);
+        cur++;
+        c.insert(last);
+    }
+    cout<<c.size();
     return 0;
 }
