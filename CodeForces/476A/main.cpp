@@ -10,7 +10,7 @@ int main(){
         return 0;
     }
     while(s<n){
-        res++;
+        res+=m;
         s+=2*m;
     }
     while(s>n){

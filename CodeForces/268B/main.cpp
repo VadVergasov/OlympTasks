@@ -3,13 +3,11 @@
 using namespace std;
 
 int main(){
-    int n, res=0;
+    int n;
     cin>>n;
-    while(n){
-        if(n%2==1){
-            res++;
-        }
-        n/=2;
+    long long res=n;
+    for(int i=1;i<n;i++){
+        res+=(n-i)*i;
     }
     cout<<res;
     return 0;
