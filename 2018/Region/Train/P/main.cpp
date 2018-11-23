@@ -2,14 +2,14 @@
 
 using namespace std;
 
-bool comp(pair<int, double> a, pair<int, double> b){
-    if(abs(a.second-b.second)<=0.0001){
+bool comp(pair<int, int> a, pair<int, int> b){
+    if(a.second==b.second){
         return a.first>b.second;
     }
     return a.second>b.second;
 }
 
-bool cmp(vector<double> a, vector<double> b){
+bool cmp(vector<int> a, vector<int> b){
     if(a[1]>b[1]){
         return false;
     }
@@ -26,8 +26,8 @@ int main(){
     double a, b, c, d;
     in>>n;
     vector<int> p, q;
-    vector<vector<double> > u;
-    vector<pair<int, double> > r;
+    vector<vector<int> > u;
+    vector<pair<int, int> > r;
     for(int i=0;i<n;i++){
         in>>tmp;
         m+=tmp;
@@ -40,7 +40,7 @@ int main(){
     }
     u.push_back({0, 0, 0, 0, 0, 0, -1});
     for(int i=0;i<m;i++){
-        double sum=0;
+        int sum=0;
         in>>tmp;
         u[i].push_back(tmp);
         in>>tmp;
@@ -56,7 +56,7 @@ int main(){
     sort(u.begin(), u.end(), cmp);
     for(int i=0;i<n;i++){
         int j=1;
-        while((j<q[i]+1||abs(u[num+j][6]-u[num+j-1][6])<=0.0001&&q[i]!=0)&&to_string(u[num+j][6])!="0.000000"){
+        while((j<q[i]+1||(u[num+j][6]==u[num+j-1][6])&&q[i]!=0)&&u[num+j][6]!=0){
             r.push_back(make_pair(u[num+j][0], u[num+j][6]));
             j++;
         }
