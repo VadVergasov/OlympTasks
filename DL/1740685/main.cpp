@@ -9,7 +9,7 @@ bool cmp(pair<int, int> a, pair<int, int> b){
 int main(){
     ifstream in("input.txt");
     ofstream out("output.txt");
-    int n, k, tmp;
+    long long n, k, tmp;
     in>>n>>k;
     vector<int> a(k+1, 0);
     for(int i=0;i<n;i++){
@@ -23,7 +23,7 @@ int main(){
         }
     }
     sort(b.begin(), b.end(), cmp);
-    long long res=(k-b.size())*n, i=0;
+    long long res=(k-(long long)b.size())*n, i=0;
     while(n){
         res+=n;
         n-=b[i].second;

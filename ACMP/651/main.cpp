@@ -5,26 +5,28 @@ using namespace std;
 int main(){
     ifstream in("input.txt");
     ofstream out("output.txt");
-    long long n, m, f=0, s=0;
+    long long n, m, nok, f=0, s=0;
     in>>n>>m;
-    for(long long i=2;i<=sqrt(n);i++){
-        while(n%i==0){
+    nok=n/__gcd(n, m)*m;
+    long long a=nok/n, b=nok/m;
+    for(int i=2;i<=sqrt(a);i++){
+        while(a%i==0){
             f++;
-            n/=i;
+            a/=i;
         }
     }
-    if(n>1){
+    if(a>1){
         f++;
     }
-    for(long long i=2;i<=sqrt(m);i++){
-        while(m%i==0){
+    for(int i=2;i<=sqrt(b);i++){
+        while(b%i==0){
             s++;
-            m/=i;
+            b/=i;
         }
     }
-    if(m>1){
+    if(b>1){
         s++;
     }
-    out<<abs(f-s);
+    out<<f+s;
     return 0;
 }
