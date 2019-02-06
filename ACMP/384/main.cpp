@@ -9,7 +9,8 @@ int main(){
     in>>a>>b;
     int gc = __gcd(a, b), fir=0, sec=1;
     for(int i=0;i<gc;i++){
-        fir+=sec;
+        fir+=sec%1000000000;
+        fir%=1000000000;
         swap(fir, sec);
     }
     out<<fir;
