@@ -1,36 +1,51 @@
-#include "grader.h"
 #include <bits/stdc++.h>
+#include "grader.h"
 
 using namespace std;
 
-string guess_sequence (int N) {
-    vector<string> a={"ABX", "ABY", "AXB", "AXY", "AYB", "AYX", "BAX", "BAY", "BXA", "BXY", "BYA", "BYX", "XAB", "XAY", "XBA", "XBY", "XYA", "XYB", "YAB", "YAX", "YBA", "YBX", "YXA", "YXB"};
+string guess_sequence(int N) {
     string p = "";
-    vector<char> sym={'A', 'B', 'X', 'Y'};
-    for(int i=0;i<4;i++){
-        string t="";
-        t.push_back(sym[i]);
-        if(press(t)==1){
-            p=sym[i];
-            sym.erase(sym.begin()+i, sym.begin()+i+1);
-            break;
+    vector<char> sym;
+    if (press("XY") >= 1) {
+        if (press("X") == 1) {
+            p = "X";
+            sym = {'A', 'B', 'Y'};
+        } else {
+            p = "Y";
+            sym = {'A', 'B', 'X'};
+        }
+    } else {
+        if (press("A") == 1) {
+            p = "A";
+            sym = {'B', 'X', 'Y'};
+        } else {
+            p = "B";
+            sym = {'A', 'X', 'Y'};
         }
     }
-    char cur=sym[0];
-    int n=1;
-    while(press(p+cur)!=N){
-        if(n<press(p+cur)){
-            p+=cur;
-            cur=sym[0];
-            n++;
-        }else{
-            if(cur==sym[0]){
-                cur=sym[1];
-            }else{
-                cur=sym[2];
-            }
+    for (int i = 0; i < N - 2; i++) {
+        string req = p + sym[0] + sym[0] + p + sym[0] + sym[1] + p + sym[0] +
+                     sym[2] + p + sym[2];
+        int ret = press(req);
+        if (ret == p.size() + 1) {
+            p += sym[2];
+        } else if (ret == p.size() + 2) {
+            p += sym[0];
+        } else {
+            p += sym[1];
         }
     }
-    p+=cur;
+    if (N == 1) {
+        return p;
+    }
+    if (press(p + sym[0]) == N) {
+        p += sym[0];
+    } else {
+        if (press(p + sym[1]) == N) {
+            p += sym[1];
+        } else {
+            p += sym[2];
+        }
+    }
     return p;
 }

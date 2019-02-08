@@ -2,13 +2,13 @@
 
 using namespace std;
 
-int main(){
+int main() {
     long long n;
-    cin>>n;
-    if(n%2==0){
-        cout<<n/2;
-    }else{
-        cout<<-(long long)ceil((double)n/2);
+    cin >> n;
+    if (n % 2 == 0) {
+        cout << n / 2;
+    } else {
+        cout << -(long long)ceil((double)n / 2);
     }
     return 0;
 }

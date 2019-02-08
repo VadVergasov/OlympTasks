@@ -2,25 +2,25 @@
 
 using namespace std;
 
-int main(){
+int main() {
     ifstream in("input.txt");
     ofstream out("output.txt");
     int n;
-    in>>n;
+    in >> n;
     string s;
-    in>>s;
-    long long res=0, cur;
-    if(n%s.size()==0){
-        res=s.size();
-        cur=res;
-    }else{
-        res=n%s.size();
-        cur=res;
+    in >> s;
+    long long res = 0, cur;
+    if (n % s.size() == 0) {
+        res = s.size();
+        cur = res;
+    } else {
+        res = n % s.size();
+        cur = res;
     }
-    while(cur!=n){
-        cur+=s.size();
-        res*=cur;
+    while (cur != n) {
+        cur += s.size();
+        res *= cur;
     }
-    out<<res;
+    out << res;
     return 0;
 }

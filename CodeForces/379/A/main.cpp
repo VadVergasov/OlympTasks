@@ -2,17 +2,17 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int a, b;
-    cin>>a>>b;
-    int res=0;
-    while(a){
+    cin >> a >> b;
+    int res = 0;
+    while (a) {
         res++;
-        if(res%b==0){
+        if (res % b == 0) {
             a++;
         }
         a--;
     }
-    cout<<res;
+    cout << res;
     return 0;
 }

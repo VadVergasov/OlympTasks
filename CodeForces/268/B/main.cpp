@@ -2,13 +2,13 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int n;
-    cin>>n;
-    long long res=n;
-    for(int i=1;i<n;i++){
-        res+=(n-i)*i;
+    cin >> n;
+    long long res = n;
+    for (int i = 1; i < n; i++) {
+        res += (n - i) * i;
     }
-    cout<<res;
+    cout << res;
     return 0;
 }

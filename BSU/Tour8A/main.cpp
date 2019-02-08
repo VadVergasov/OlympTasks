@@ -4,16 +4,13 @@ using namespace std;
 
 int m[300];
 
-int func(int a){
+int func(int a) { return 0; }
 
-    return 0;
-}
-
-int main(){
-    m[1]=2;
-    m[2]=6;
+int main() {
+    m[1] = 2;
+    m[2] = 6;
     int n;
-    cin>>n;
-    cout<<func(n);
+    cin >> n;
+    cout << func(n);
     return 0;
 }

@@ -2,16 +2,16 @@
 
 using namespace std;
 
-int main(){
+int main() {
     string a, b;
-    cin>>b>>a;
-    for(int i=0;i<a.size();i++){
-        if(a[i]<=b[0]){
+    cin >> b >> a;
+    for (int i = 0; i < a.size(); i++) {
+        if (a[i] <= b[0]) {
             b.insert(b.begin(), a[i]);
-        }else{
+        } else {
             b.insert(b.end(), a[i]);
         }
     }
-    cout<<b;
+    cout << b;
     return 0;
 }

@@ -2,12 +2,12 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int k, n, s, p;
-    cin>>k>>n>>s>>p;
+    cin >> k >> n >> s >> p;
     int ls = ceil((double)n / (double)s);
     int t = ls * k;
     int res = ceil((double)t / (double)p);
-    cout<<res;
+    cout << res;
     return 0;
 }

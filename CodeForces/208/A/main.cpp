@@ -2,15 +2,15 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int tmp;
     string s;
-    cin>>s;
+    cin >> s;
     tmp = s.find("WUB");
-    while(tmp!=-1){
+    while (tmp != -1) {
         s.replace(tmp, 3, " ");
-        tmp=s.find("WUB");
+        tmp = s.find("WUB");
     }
-    cout<<s;
+    cout << s;
     return 0;
 }

@@ -2,10 +2,10 @@
 
 using namespace std;
 
-int main(){
+int main() {
     short int n;
-    cin>>n;
+    cin >> n;
     n++;
-    cout<<n*n/4;
+    cout << n * n / 4;
     return 0;
 }

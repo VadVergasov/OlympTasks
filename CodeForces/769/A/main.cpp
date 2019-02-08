@@ -2,19 +2,19 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int n, tmp;
-    cin>>n;
+    cin >> n;
     vector<int> igor;
-    for(int i=0;i<n;i++){
-        cin>>tmp;
+    for (int i = 0; i < n; i++) {
+        cin >> tmp;
         igor.push_back(tmp);
     }
-    if(n==1){
-        cout<<igor[0];
-    }else{
+    if (n == 1) {
+        cout << igor[0];
+    } else {
         sort(igor.begin(), igor.end());
-        cout<<igor[ceil(igor.size()/2)];
+        cout << igor[ceil(igor.size() / 2)];
     }
     return 0;
 }

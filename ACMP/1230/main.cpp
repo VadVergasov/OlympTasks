@@ -2,18 +2,18 @@
 
 using namespace std;
 
-int main(){
+int main() {
     ifstream in("input.txt");
     ofstream out("output.txt");
     int n;
-    in>>n;
+    in >> n;
     vector<int> a(n);
-    for(int i=0;i<n;i++){
-        in>>a[i];
+    for (int i = 0; i < n; i++) {
+        in >> a[i];
     }
     sort(a.begin(), a.end());
-    for(int i=0;i<n;i++){
-        out<<a[i]<<" ";
+    for (int i = 0; i < n; i++) {
+        out << a[i] << " ";
     }
     return 0;
 }

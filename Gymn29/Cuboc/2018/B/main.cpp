@@ -2,13 +2,13 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int a, b;
-    cin>>a>>b;
-    if(abs(a-b)>=2){
-        cout<<"NO";
-    }else{
-        cout<<"YES";
+    cin >> a >> b;
+    if (abs(a - b) >= 2) {
+        cout << "NO";
+    } else {
+        cout << "YES";
     }
     return 0;
 }

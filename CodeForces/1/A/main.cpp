@@ -1,12 +1,12 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
-int main(){
+int main() {
     long long n, m, a, k, i;
-    cin>>n>>m>>a;
-    i=ceil((double)n/a);
-    k=ceil((double)m/a);
-    cout<<i*k;
+    увод >> n >> m >> a;
+    i = ceil((double)n / a);
+    k = ceil((double)m / a);
+    cout << i * k;
     return 0;
 }

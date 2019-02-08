@@ -2,9 +2,8 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int y, w, n;
-    cin>>y>>w;
-
+    cin >> y >> w;
     return 0;
 }

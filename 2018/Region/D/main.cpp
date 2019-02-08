@@ -2,22 +2,22 @@
 
 using namespace std;
 
-int main(){
+int main() {
     ifstream in("input.txt");
     ofstream out("output.txt");
-    long long n, tmp, p=0, num=0;
-    in>>n;
+    long long n, tmp, p = 0, num = 0;
+    in >> n;
     vector<long long> a;
-    for(int i=0;i<n;i++){
-        in>>tmp;
+    for (int i = 0; i < n; i++) {
+        in >> tmp;
         a.push_back(tmp);
     }
     sort(a.begin(), a.end());
-    while(n-1-num>p){
-        p+=min(a[num], n-1-num);
+    while (n - 1 - num > p) {
+        p += min(a[num], n - 1 - num);
         num++;
     }
-    out<<p;
+    out << p;
     return 0;
 }
 

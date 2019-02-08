@@ -2,20 +2,20 @@
 
 using namespace std;
 
-int main(){
+int main() {
     ifstream in("input.txt");
     ofstream out("output.txt");
-    int n, cur=0, res=0;
+    int n, cur = 0, res = 0;
     char tmp;
-    while(in>>tmp){
-        if(tmp=='0'){
+    while (in >> tmp) {
+        if (tmp == '0') {
             cur++;
-        }else{
-            res=max(res, cur);
-            cur=0;
+        } else {
+            res = max(res, cur);
+            cur = 0;
         }
     }
-    res=max(res, cur);
-    out<<res;
+    res = max(res, cur);
+    out << res;
     return 0;
 }

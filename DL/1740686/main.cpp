@@ -2,22 +2,22 @@
 
 using namespace std;
 
-int main(){
+int main() {
     ifstream in("input.txt");
     ofstream out("output.txt");
     int n, tmp;
-    in>>n;
+    in >> n;
     vector<int> a;
-    for(int i=0;i<n;i++){
-        in>>tmp;
+    for (int i = 0; i < n; i++) {
+        in >> tmp;
         a.push_back(tmp);
     }
-    long long sum=0;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            sum+=a[i]%a[j];
+    long long sum = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            sum += a[i] % a[j];
         }
     }
-    out<<sum;
+    out << sum;
     return 0;
 }

@@ -2,17 +2,17 @@
 
 using namespace std;
 
-int main(){
+int main() {
     ifstream in("input.txt");
     ofstream out("output.txt");
     int a, b;
-    in>>a>>b;
-    int gc = __gcd(a, b), fir=0, sec=1;
-    for(int i=0;i<gc;i++){
-        fir+=sec%1000000000;
-        fir%=1000000000;
+    in >> a >> b;
+    int gc = __gcd(a, b), fir = 0, sec = 1;
+    for (int i = 0; i < gc; i++) {
+        fir += sec % 1000000000;
+        fir %= 1000000000;
         swap(fir, sec);
     }
-    out<<fir;
+    out << fir;
     return 0;
 }

@@ -2,16 +2,16 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int n, k;
-    cin>>n>>k;
-    for(int i=0;i<k;i++){
-        if(n%10!=0){
+    cin >> n >> k;
+    for (int i = 0; i < k; i++) {
+        if (n % 10 != 0) {
             n--;
-        }else{
-            n/=10;
+        } else {
+            n /= 10;
         }
     }
-    cout<<n;
+    cout << n;
     return 0;
 }

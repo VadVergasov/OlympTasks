@@ -2,9 +2,9 @@
 
 using namespace std;
 
-int main(){
+int main() {
     long long a, b;
-    cin>>a>>b;
-    cout<<pow(a, b)+pow(b, a);
+    cin >> a >> b;
+    cout << pow(a, b) + pow(b, a);
     return 0;
 }

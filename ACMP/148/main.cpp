@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int main(){
+int main() {
     ifstream in("input.txt");
     ofstream out("output.txt");
     int a, b;
-    in>>a>>b;
-    out<<__gcd(a, b);
+    in >> a >> b;
+    out << __gcd(a, b);
     return 0;
 }

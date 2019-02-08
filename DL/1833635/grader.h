@@ -1,6 +1,6 @@
 #include <string>
 using std::string;
 
-string guess_sequence (int N);
+string guess_sequence(int N);
 
-int press (string p);
+int press(string p);
