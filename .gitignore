@@ -7,3 +7,5 @@ bin/
 obj/
 .vscode
 *.exe
+*.i
+*.o
