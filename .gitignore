@@ -9,3 +9,5 @@ obj/
 *.exe
 *.i
 *.o
+*.in
+*.out
