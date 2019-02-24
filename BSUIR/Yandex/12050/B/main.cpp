@@ -2,15 +2,15 @@
 
 using namespace std;
 
-vector<pair<long long, int> > tree;
+vector<pair<long long, long long> > tree;
 vector<int> a;
 
 void push(int v, int tl, int tr) {
     if (tree[v].second != -1) {
         tree[v * 2].second = tree[v * 2 + 1].second = tree[v].second;
         int tm = (tl + tr) / 2;
-        tree[v * 2].first = (long long)tree[v].second * (tm - tl + 1);
-        tree[v * 2 + 1].first = (long long)tree[v].second * (tr - tm);
+        tree[v * 2].first = tree[v].second * (tm - tl + 1);
+        tree[v * 2 + 1].first = tree[v].second * (tr - tm);
         tree[v].first = tree[v * 2].first + tree[v * 2 + 1].first;
         tree[v].second = -1;
     }
@@ -63,7 +63,7 @@ int main() {
     ofstream out("segtree2.out");
     int n, q;
     in >> n >> q;
-    pair<long long, int> fill = make_pair(0, -1);
+    pair<long long, long long> fill = make_pair(0, -1);
     tree.resize(4 * n + 10, fill);
     for (int i = 0; i < q; i++) {
         char t;
