@@ -7,10 +7,6 @@ vector<bool> used;
 vector<char> color;
 
 bool dfs(int v, int c) {
-    // cout << v << " " << used[v] << " " << a[v].size() << "\n\n";
-    if (used[v]) {
-        return true;
-    }
     used[v] = true;
     color[v] = c;
     for (int i = 0; i < a[v].size(); i++) {
@@ -20,13 +16,15 @@ bool dfs(int v, int c) {
             } else if (a[v][i].second == 1 && color[a[v][i].first] != c) {
                 return false;
             }
-        } else {
-            // cout << a[v][i].first << " " << used[a[v][i].first] << "\n";
-            if (!used[a[v][i].first]) {
-                if (a[v][i].second == -1) {
-                    return dfs(a[v][i].first, !c);
-                } else {
-                    return dfs(a[v][i].first, c);
+        }
+        if (color[a[v][i].first] == 2) {
+            if (a[v][i].second == -1) {
+                if (!dfs(a[v][i].first, 1 - c)) {
+                    return false;
+                }
+            } else {
+                if (!dfs(a[v][i].first, c)) {
+                    return false;
                 }
             }
         }
@@ -48,21 +46,16 @@ int main() {
         int t1, t2;
         in >> t >> t1 >> t2;
         if (t == 'D') {
+            a[t1 - 1].push_back(make_pair(t2 - 1, -1));
+            a[t2 - 1].push_back(make_pair(t1 - 1, -1));
+        } else {
             a[t1 - 1].push_back(make_pair(t2 - 1, 1));
             a[t2 - 1].push_back(make_pair(t1 - 1, 1));
-        } else {
-            a[t1 - 1].push_back(make_pair(t2 - 1, -1));
-            a[t1 - 1].push_back(make_pair(t2 - 1, -1));
         }
     }
     for (int i = 0; i < n; i++) {
         if (!used[i]) {
             bool r = dfs(i, 1);
-            /*for (int j = 0; j < n; j++) {
-                cout << (int)color[j] << " ";
-            }
-            cout << endl;
-            cout << i << " " << r << "\n";*/
             if (r) {
                 if (res == "") {
                     res = "10";
