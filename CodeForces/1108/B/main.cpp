@@ -3,47 +3,27 @@
 using namespace std;
 
 int main() {
-    int n, tmp;
+    int n;
     cin >> n;
-    multiset<int> a;
-    set<int> b;
+    map<int, int> nums;
     for (int i = 0; i < n; i++) {
-        cin >> tmp;
-        a.insert(tmp);
+        int t;
+        cin >> t;
+        nums[t]++;
     }
-    auto i = a.end();
-    i--;
-    int res = (*i);
-    while ((*i) != 1) {
-        int d = -1;
-        for (int j = 2; j < ceil(sqrt((*i))); j++) {
-            if ((*i) % j == 0) {
-                d = j;
-                break;
-            }
+    int a, gcd, b;
+    a = nums.rbegin()->first;
+    for (auto i : nums) {
+        if (a % i.first == 0) {
+            nums[i.first]--;
         }
-        int cur = (*i);
-        if (d == -1) {
-            d = cur;
-        }
-        auto c = a.find(cur);
-        a.erase(c);
-        if (!(b.find(d) != b.end()) && (a.find(d) != a.end())) {
-            c = a.find(d);
-            a.erase(c);
-        } else if (a.find(d * d) != a.end()) {
-            c = a.find(d * d);
-            a.erase(c);
-            b.insert(d * d);
-        }
-        /*for(auto j:a){
-            cout<<j<<" ";
-        }
-        cout<<"\n";
-        cout<<cur<<" "<<d<<"\n";*/
-        b.insert(d);
-        i = a.find(cur / d);
     }
-    cout << res << " " << (*(--a.end()));
+    for (auto i = nums.rbegin(); i != nums.rend(); i++) {
+        if (i->second > 0) {
+            b = i->first;
+            break;
+        }
+    }
+    cout << a << " " << b;
     return 0;
 }

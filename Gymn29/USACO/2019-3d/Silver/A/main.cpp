@@ -19,8 +19,6 @@ int main() {
             continue;
         }
         mn = min(mn, abs(i - *j) - 1 + (abs(i - *j) - 1 != n - 2));
-        /*cout << i << " " << (*j) << " "
-             << abs(i - *j) - 1 + (abs(i - *j) - 1 != n - 2) << "\n";*/
     }
     out << mn << "\n";
     deque<int> otr;

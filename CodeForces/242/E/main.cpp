@@ -2,32 +2,84 @@
 
 using namespace std;
 
-#pragma GCC optimize("Ofast,no-stack-protector,unroll-loops")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+vector<pair<long long, long long> > tree;
+vector<int> a;
+
+void push(int v, int tl, int tr) {
+    if (tree[v].second != 0) {
+        tree[v * 2].second = tree[v * 2 + 1].second = tree[v].second;
+        int tm = (tl + tr) / 2;
+        tree[v * 2].first = tree[v].second * (tm - tl + 1);
+        tree[v * 2 + 1].first = tree[v].second * (tr - tm);
+        tree[v].first = tree[v * 2].first + tree[v * 2 + 1].first;
+        tree[v].second = 0;
+    }
+}
+
+void build(int v, int tl, int tr) {
+    if (tl == tr) {
+        tree[v].first = a[tl];
+    } else {
+        int tm = (tr + tl) / 2;
+        build(v * 2, tl, tm);
+        build(v * 2 + 1, tm + 1, tr);
+        tree[v].first = tree[v * 2].first + tree[v * 2 + 1].first;
+    }
+}
+
+long long get(int v, int tl, int tr, int l, int r) {
+    if (l > r) {
+        return 0;
+    }
+    if (tl == l && tr == r) {
+        return tree[v].first;
+    }
+    push(v, tl, tr);
+    int tm = (tr + tl) / 2;
+    return get(v * 2, tl, tm, l, min(r, tm)) +
+           get(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r);
+}
+
+void update(int v, int tl, int tr, int l, int r, int x) {
+    if (l > r) {
+        return;
+    }
+    if (tl == tr) {
+        tree[v].first ^= x;
+    } else if (tl == l && tr == r) {
+        tree[v].second = x;
+        push(v, tl, tr);
+    } else {
+        push(v, tl, tr);
+        int tm = (tl + tr) / 2;
+        update(v * 2, tl, tm, l, min(r, tm), x);
+        update(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r, x);
+        tree[v].first = tree[v * 2].first + tree[v * 2 + 1].first;
+    }
+}
 
 int main() {
-    ios_base::sync_with_stdio(false);
     int n, m, tmp, tmp1, tmp2;
     cin >> n;
-    vector<int> a(n);
+    a.resize(n, 0);
+    tree.resize(4 * n, make_pair(0, 0));
     for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
-    cin >> m;
-    for (int i = 0; i < m; i++) {
-        cin >> tmp >> tmp1 >> tmp2;
-        if (tmp == 1) {
-            long long res = 0;
-            for (int j = tmp1 - 1; j < tmp2; j++) {
-                res += a[j];
-            }
-            cout << res << "\n";
+    build(1, 0, n - 1);
+    int q;
+    cin >> q;
+    for (int i = 0; i < q; i++) {
+        int t;
+        cin >> t;
+        if (t == 1) {
+            int l, r;
+            cin >> l >> r;
+            cout << get(1, 0, n - 1, l - 1, r - 1) << "\n";
         } else {
-            int x;
-            cin >> x;
-            for (int j = tmp1 - 1; j < tmp2; j++) {
-                a[j] ^= x;
-            }
+            int l, r, x;
+            cin >> l >> r >> x;
+            update(1, 0, n - 1, l - 1, r - 1, x);
         }
     }
     return 0;

@@ -3,38 +3,42 @@
 using namespace std;
 
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    long long res = 0;
     int n, k, m;
     cin >> n >> k >> m;
-    vector<string> a(n), mes(m);
+    map<string, int> all;
+    vector<string> a(n);
     vector<int> c(n);
-    long long res = 0;
     for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
     for (int i = 0; i < n; i++) {
         cin >> c[i];
     }
+    for (int i = 0; i < n; i++) {
+        all[a[i]] = c[i];
+    }
     for (int i = 0; i < k; i++) {
-        int x, mn = 10e8;
+        int x;
         cin >> x;
         vector<int> t(x);
+        int mn = 1e9;
         for (int j = 0; j < x; j++) {
             cin >> t[j];
+            t[j]--;
+            mn = min(mn, c[t[j]]);
         }
         for (int j = 0; j < x; j++) {
-            mn = min(mn, c[t[j] - 1]);
-        }
-        for (int j = 0; j < x; j++) {
-            c[t[j] - 1] = mn;
+            all[a[t[j]]] = mn;
         }
     }
     for (int i = 0; i < m; i++) {
-        cin >> mes[i];
-        for (int j = 0; j < n; j++) {
-            if (mes[i] == a[j]) {
-                res += c[j];
-            }
-        }
+        string s;
+        cin >> s;
+        res += all[s];
     }
     cout << res;
     return 0;

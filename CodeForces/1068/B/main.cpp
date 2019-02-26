@@ -5,13 +5,15 @@ using namespace std;
 int main() {
     long long b;
     cin >> b;
-    set<long long> c;
-    long long last = 0, cur = 1;
-    while (last != 1) {
-        last = b / __gcd(b, cur);
-        cur++;
-        c.insert(last);
+    int res = 0;
+    for (long long i = 1; i <= sqrt(b); i++) {
+        if (b % i == 0) {
+            res += 2;
+        }
+        if (i * i == b) {
+            res--;
+        }
     }
-    cout << c.size();
+    cout << res;
     return 0;
 }
