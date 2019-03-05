@@ -5,6 +5,10 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
+    if (n > 8) {
+        cout << 0;
+        return 0;
+    }
     vector<int> d(n), b;
     for (int i = 0; i < n; i++) {
         cin >> d[i];
