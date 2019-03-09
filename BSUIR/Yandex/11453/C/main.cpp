@@ -11,22 +11,24 @@ int main() {
     in >> n;
     string s;
     in >> s;
-    long long res = 0;
-    if (s[0] == '0' && s[1] == '0') {
-        out << 0;
-        return 0;
-    }
-    for (int i = s.size() - 1; i >= 0; i--) {
-        if (s[i] != '0') {
-            for (int j = i - 1; j >= 0; j--) {
-                if (s[j] == '0') {
-                    break;
-                }
-            }
-            res++;
-            res %= mod;
+    vector<long long> dp(n + 1, 0);
+    long long sum = 0;
+    int pos = 0;
+    for (int i = n - 1; i > 0; i--) {
+        if (s[i] == '1') {
+            dp[i - 1] = 1;
+            pos = i;
+            break;
         }
     }
-    out << res - 1;
+    for (int i = pos - 1; i > 0; i--) {
+        sum += dp[i + 1];
+        if (s[i] == '1') {
+            dp[i - 1] = sum + 1;
+            sum %= mod;
+            cout << i << " " << dp[i - 1] << " " << sum << "\n";
+        }
+    }
+    out << dp.front();
     return 0;
 }
