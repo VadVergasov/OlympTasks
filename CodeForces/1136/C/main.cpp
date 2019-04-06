@@ -17,32 +17,19 @@ int main() {
             cin >> b[i][j];
         }
     }
-    bool res = true;
-    for (int i = 0; i < n && res; i++) {
-        int x = i, y = 0;
-        multiset<long long> nums;
-        while (y < m && x >= 0) {
-            nums.insert(a[x][y]);
-            x--;
-            y++;
+    for (int i = 0; i < n; i++) {
+        multiset<long long> first, second;
+        int cur = i;
+        while (cur > -1) {
+            first.insert(a[cur][cur]);
+            second.insert(b[cur][cur]);
+            cur--;
         }
-        x = i, y = 0;
-        while (y < m && x >= 0) {
-            auto f = nums.find(b[x][y]);
-            if (f != nums.end()) {
-                nums.erase(f);
-            } else {
-                res = false;
-                break;
-            }
-            x--;
-            y++;
+        if (first != second) {
+            cout << "NO\n";
+            return 0;
         }
     }
-    if (res) {
-        cout << "YES";
-    } else {
-        cout << "NO";
-    }
+    cout << "YES\n";
     return 0;
 }
