@@ -12,17 +12,13 @@ int main() {
         in >> a[i];
     }
     sort(a.begin(), a.end());
-    long long res = 0;
-    res = a[1] - a[0];
-    res += a.back() - a[a.size() - 2];
-    for (int i = 1; i < a.size() - 2; i++) {
-        if (a[i + 1] - a[i] <= a[i + 2] - a[i + 1]) {
-            res += a[i + 1] - a[i];
-        } else {
-            res += a[i + 2] - a[i + 1];
-            i++;
-        }
+    vector<vector<int> > dp(n, vector<int>(n, 10e8));
+    dp[0][0] = 0;
+    for (int i = 1; i < n; i++) {
+        dp[i][0] = min(dp[i - 1][1], dp[i][0]);
+        dp[i][1] = min({dp[i - 1][0] + (a[i] - a[i - 1]), dp[i][1],
+                        dp[i - 1][1] + (a[i] - a[i - 1])});
     }
-    out << res;
+    out << dp[n - 1][1];
     return 0;
 }
