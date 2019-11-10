@@ -6,27 +6,21 @@ int main() {
     int n, l, r, x;
     cin >> n >> l >> r >> x;
     vector<int> c(n);
-    map<int, int> a;
     for (int i = 0; i < n; i++) {
         cin >> c[i];
     }
+    long long res = 0;
     sort(c.begin(), c.end());
     for (int i = 0; i < n; i++) {
-        int sum = 0;
-        int fir = c[i];
-        for (int j = i; j < n; j++) {
-            if (c[j] - fir < x) {
-                continue;
+        long long sum = c[i];
+        for (int j = n - 1; j > i; j--) {
+            if (c[j] - c[i] >= x) {
+                sum += c[j];
+                cout << c[i] << " " << c[j] << " " << sum << endl;
+                if (sum >= l && sum <= r) {
+                    res++;
+                }
             }
-            cout << sum << " " << c[j] << " " << fir << "\n";
-            sum += c[j];
-            a[sum]++;
-        }
-    }
-    int res = 0;
-    for (auto i : a) {
-        if (i.first >= l && i.first <= r) {
-            res += i.second;
         }
     }
     cout << res;
