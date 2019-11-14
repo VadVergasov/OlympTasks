@@ -12,16 +12,26 @@ int main() {
     sort(a.rbegin(), a.rend());
     int m;
     cin >> m;
-    int pos[3] = {0, 1, 2};
-    int sum = a[pos[0]] + a[pos[1]] + a[pos[2]];
-    int change = 2;
-    while (sum > m) {
-        if (pos[change] == a.size() - 1) {
-            change--;
+    vector<vector<int> > dp(m + 1, vector<int>(4, 0));
+    dp[0][0] = 1;
+    for (int k = 1; k < 4; k++) {
+        for (int i = 1; i <= m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i - a[j] < 0) {
+                    continue;
+                }
+                if (dp[i - a[j]][k - 1] == 0) {
+                    continue;
+                }
+                dp[i][k] = dp[i - a[j]][k - 1];
+            }
         }
-        pos[change]++;
-        sum = a[pos[0]] + a[pos[1]] + a[pos[2]];
     }
-    cout << sum;
+    for (int i = m; i >= 0; i--) {
+        if (dp[i][3] == 1) {
+            cout << i;
+            return 0;
+        }
+    }
     return 0;
 }

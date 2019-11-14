@@ -10,9 +10,12 @@ int main() {
     vector<vector<char> > t(9, vector<char>(9));
     vector<vector<vector<char> > > a(n,
                                      vector<vector<char> >(9, vector<char>(9)));
+    in.ignore();
     for (int i = 0; i < 9; i++) {
+        string s;
+        getline(in, s);
         for (int j = 0; j < 9; j++) {
-            in >> t[i][j];
+            t[i][j] = s[j];
         }
     }
     for (int i = 0; i < n; i++) {
@@ -26,7 +29,7 @@ int main() {
         bool res = true;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (t[i][j] == '*' || t[i][j] == a[k][i][j]) {
+                if (t[i][j] == '*' || t[i][j] == ' ' || t[i][j] == a[k][i][j]) {
                     continue;
                 } else {
                     out << "N";
