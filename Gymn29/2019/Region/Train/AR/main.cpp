@@ -3,94 +3,59 @@
 using namespace std;
 
 int main() {
-    ofstream out("output.txt");
+    ios_base::sync_with_stdio(false);
     ifstream in("input.txt");
-    int n;
-    in >> n;
-    vector<vector<char> > t(9, vector<char>(9));
-    vector<vector<vector<char> > > a(n,
-                                     vector<vector<char> >(9, vector<char>(9)));
+    ofstream out("output.txt");
+    int Q;
+    in >> Q;
     in.ignore();
-    for (int i = 0; i < 9; i++) {
-        string s;
-        getline(in, s);
-        for (int j = 0; j < 9; j++) {
-            t[i][j] = s[j];
-        }
+    int n = 9;
+    vector<string> q(n);
+    for (int i = 0; i < n; ++i) {
+        getline(in, q[i], '\n');
     }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < 9; j++) {
-            for (int k = 0; k < 9; k++) {
-                in >> a[i][j][k];
+    auto check = [&](map<char, int> mp) {
+        if (mp.size() != 9) return 1;
+        int ok = 1;
+        for (auto k : mp)
+            if (k.second > 1) ok = 0;
+        return (1 - ok);
+    };
+    while (Q--) {
+        int ans = 1;
+        vector<string> temp(n);
+        for (int i = 0; i < n; ++i) {
+            getline(in, temp[i], '\n');
+            for (int j = 0; j < n; ++j) {
+                if (!isdigit(temp[i][j]) || temp[i][j] == '0') ans = 0;
+                if (q[i][j] != temp[i][j] && q[i][j] != '*') ans = 0;
             }
         }
-    }
-    for (int k = 0; k < n; k++) {
-        bool res = true;
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (t[i][j] == '*' || t[i][j] == ' ' || t[i][j] == a[k][i][j]) {
-                    continue;
-                } else {
-                    out << "N";
-                    res = false;
-                    break;
-                }
-            }
-            if (!res) {
-                break;
-            }
+        for (int i = 0; i < n; ++i) {
+            map<char, int> mp;
+            for (int j = 0; j < n; ++j) mp[temp[i][j]]++;
+            if (check(mp)) ans = 0;
         }
-        if (!res) {
-            continue;
+        for (int j = 0; j < n; ++j) {
+            map<char, int> mp;
+            for (int i = 0; i < n; ++i) mp[temp[i][j]]++;
+            if (check(mp)) ans = 0;
         }
-        for (int i = 0; i < 9; i++) {
-            set<char> v, g;
-            for (int j = 0; j < 9; j++) {
-                if ((v.find(a[k][i][j]) != v.end()) ||
-                    (g.find(a[k][j][i]) != g.end())) {
-                    out << "N";
-                    res = false;
-                    break;
-                }
-                v.insert(a[k][i][j]);
-                g.insert(a[k][j][i]);
-            }
-            if (!res) {
-                break;
-            }
-        }
-        if (!res) {
-            continue;
-        }
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
-                set<char> s;
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        if (s.find(a[k][x * 3 + i][y * 3 + j]) != s.end()) {
-                            out << "N";
-                            res = false;
-                            break;
-                        }
-                        s.insert(a[k][x * 3 + i][y * 3 + j]);
-                    }
-                    if (!res) {
-                        break;
+        map<char, int> mp;
+        for (int k = 0; k < 3; k++) {
+            for (int z = 0; z < 3; z++) {
+                for (int i = 0; i < 3; ++i) {
+                    for (int j = 0; j < 3; ++j) {
+                        mp[temp[k * 3 + i][z * 3 + j]]++;
                     }
                 }
-                if (!res) {
-                    break;
+                if (check(mp)) {
+                    ans = 0;
                 }
-            }
-            if (!res) {
-                break;
+                mp.clear();
             }
         }
-        if (!res) {
-            continue;
-        }
-        out << "Y";
+        out << ((ans == 1) ? 'Y' : 'N');
     }
     return 0;
 }

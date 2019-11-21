@@ -3,35 +3,28 @@
 using namespace std;
 
 int main() {
-    int n;
+    int n, res = -1;
     cin >> n;
     vector<int> a(n);
     for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
-    sort(a.rbegin(), a.rend());
+    sort(a.begin(), a.end());
     int m;
     cin >> m;
-    vector<vector<int> > dp(m + 1, vector<int>(4, 0));
-    dp[0][0] = 1;
-    for (int k = 1; k < 4; k++) {
-        for (int i = 1; i <= m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i - a[j] < 0) {
-                    continue;
-                }
-                if (dp[i - a[j]][k - 1] == 0) {
-                    continue;
-                }
-                dp[i][k] = dp[i - a[j]][k - 1];
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            int sum = a[i] + a[j];
+            auto l = upper_bound(a.begin(), a.end(), m - sum);
+            l--;
+            if ((int)(l - a.begin()) == i || (int)(l - a.begin()) == j) {
+                continue;
+            }
+            if (sum + (*l) <= m) {
+                res = max(sum + (*l), res);
             }
         }
     }
-    for (int i = m; i >= 0; i--) {
-        if (dp[i][3] == 1) {
-            cout << i;
-            return 0;
-        }
-    }
+    cout << res;
     return 0;
 }
