@@ -9,6 +9,8 @@ int main() {
     if (n % 2 == 1) {
         num += a;
     }
+    if (k > n / 2) {
+    }
     if (n < k) {
         cout << 0;
         return 0;

@@ -7,10 +7,10 @@ int main() {
     ofstream out("output.txt");
     in.tie(0);
     ios_base::sync_with_stdio(0);
-    int n;
+    long long n;
     in >> n;
-    map<int, int> d;
-    for (int i = 0; i < n; i++) {
+    map<long long, long long> d;
+    for (long long i = 0; i < n; i++) {
         long long t;
         in >> t;
         while (t % 2 == 0) {
@@ -21,8 +21,8 @@ int main() {
                 return 0;
             }
         }
-        int last = 10e5;
-        for (int j = 3; j <= last; j += 2) {
+        long long last = 10e5;
+        for (long long j = 3; j <= last; j += 2) {
             while (t % j == 0) {
                 t /= j;
                 d[j]++;
