@@ -19,8 +19,9 @@ int main(int argc, char* argv[]) {
     cout << rnd.next(1LL, H) << endl;
 
     for (int i = 0; i < q; i++) {
-        cout << rnd.next(1, n) << " " << rnd.next(0, n / 2) << " "
-             << rnd.next(1LL, H) << endl;
+        cout << rnd.next(1, n) << " ";
+        cout << rnd.next(0, (int)(n / 2)) << " ";
+        cout << rnd.next(1LL, H) << endl;
     }
 
     return 0;

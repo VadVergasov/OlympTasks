@@ -11,28 +11,28 @@ int main(int argc, char* argv[]) {
     vector<long long> h;
     vector<pair<int, pair<int, int> > > qu;
 
-    n = inf.readInt(1, 1000000);
+    n = inf.readInt(1, 1000000, "n");
     inf.readSpace();
-    H = inf.readLong(1LL, (long long)(1LL << 32LL) - 1);
+    H = inf.readLong(1LL, (long long)(1LL << 32LL) - 1, "H");
     inf.readSpace();
-    q = inf.readInt(1, 100000);
+    q = inf.readInt(1, 100000, "q");
     inf.readEoln();
     h.resize(n);
     qu.resize(q);
 
     for (int i = 0; i < n - 1; i++) {
-        h[i] = inf.readLong(1LL, H);
+        h[i] = inf.readLong(1LL, H, "h_i");
         inf.readSpace();
     }
-    h.back() = inf.readLong(1LL, H);
+    h.back() = inf.readLong(1LL, H, "h_i");
     inf.readEoln();
 
     for (int i = 0; i < q; i++) {
-        qu[i].first = inf.readInt(1, n);
+        qu[i].first = inf.readInt(1, n, "pos_i");
         inf.readSpace();
-        qu[i].second.first = inf.readInt(0, n / 2);
+        qu[i].second.first = inf.readInt(0, n / 2, "s_i");
         inf.readSpace();
-        qu[i].second.second = inf.readLong(1LL, H);
+        qu[i].second.second = inf.readLong(1LL, H, "v_i");
         inf.readEoln();
     }
     inf.readEof();
