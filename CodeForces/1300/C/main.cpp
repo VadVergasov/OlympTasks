@@ -1,35 +1,41 @@
+// https://codeforces.com/contest/1300/problem/C
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int func(int a, int b) { return (a | b) - b; }
-
 int main() {
-    int n;
+    long long n;
     cin >> n;
-    vector<int> a(n);
+    vector<long long> a(n);
     for (auto &i : a) {
         cin >> i;
     }
-    sort(a.begin(), a.end());
-    /*for (auto i : a) {
-        cout << i << " ";
-    }*/
-    int mx = 0, num = 0, i = 0;
-    vector<int> res;
-    while (next_permutation(a.begin(), a.end())) {
-        vector<int> b = a;
-        for (int i = 0; i < n - 1; i++) {
-            b[i + 1] = func(b[i], b[i + 1]);
+    for (long long i = 32; i >= 0; i--) {
+        long long num = 0;
+        for (auto j : a) {
+            if (j & (1LL << i)) {
+                num++;
+            }
         }
-        if (mx <= b.back()) {
-            mx = b.back();
-            res = a;
+        if (num == 1) {
+            long long number = -1;
+            for (auto j : a) {
+                if (j & (1LL << i)) {
+                    number = j;
+                    cout << j << " ";
+                    break;
+                }
+            }
+            for (auto j : a) {
+                if (j == number) {
+                    continue;
+                }
+                cout << j << " ";
+            }
+            return 0;
         }
-        i++;
     }
-    cout << mx << "\n";
-    for (auto i : res) {
+    for (auto i : a) {
         cout << i << " ";
     }
     return 0;
