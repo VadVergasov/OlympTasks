@@ -1,0 +1,266 @@
+{
+    "status": "OK",
+    "result": [
+        {
+            "id": 71800848,
+            "contestId": 1311,
+            "creationTimeSeconds": 1582560007,
+            "relativeTimeSeconds": 5107,
+            "problem": {
+                "contestId": 1311,
+                "index": "E",
+                "name": "Construct the Binary Tree",
+                "type": "PROGRAMMING",
+                "tags": [
+                    "constructive algorithms",
+                    "trees"
+                ]
+            },
+            "author": {
+                "contestId": 1311,
+                "members": [
+                    {
+                        "handle": "ieW_xelA"
+                    }
+                ],
+                "participantType": "CONTESTANT",
+                "ghost": false,
+                "startTimeSeconds": 1582554900
+            },
+            "programmingLanguage": "GNU C++11",
+            "verdict": "OK",
+            "testset": "TESTS",
+            "passedTestCount": 33,
+            "timeConsumedMillis": 31,
+            "memoryConsumedBytes": 102400
+        },
+        {
+            "id": 71798921,
+            "contestId": 1311,
+            "creationTimeSeconds": 1582559547,
+            "relativeTimeSeconds": 4647,
+            "problem": {
+                "contestId": 1311,
+                "index": "E",
+                "name": "Construct the Binary Tree",
+                "type": "PROGRAMMING",
+                "tags": [
+                    "constructive algorithms",
+                    "trees"
+                ]
+            },
+            "author": {
+                "contestId": 1311,
+                "members": [
+                    {
+                        "handle": "ieW_xelA"
+                    }
+                ],
+                "participantType": "CONTESTANT",
+                "ghost": false,
+                "startTimeSeconds": 1582554900
+            },
+            "programmingLanguage": "GNU C++11",
+            "verdict": "WRONG_ANSWER",
+            "testset": "TESTS",
+            "passedTestCount": 1,
+            "timeConsumedMillis": 31,
+            "memoryConsumedBytes": 102400
+        },
+        {
+            "id": 71785219,
+            "contestId": 1311,
+            "creationTimeSeconds": 1582556903,
+            "relativeTimeSeconds": 2003,
+            "problem": {
+                "contestId": 1311,
+                "index": "F",
+                "name": "Moving Points",
+                "type": "PROGRAMMING",
+                "tags": [
+                    "data structures",
+                    "sortings"
+                ]
+            },
+            "author": {
+                "contestId": 1311,
+                "members": [
+                    {
+                        "handle": "ieW_xelA"
+                    }
+                ],
+                "participantType": "CONTESTANT",
+                "ghost": false,
+                "startTimeSeconds": 1582554900
+            },
+            "programmingLanguage": "GNU C++11",
+            "verdict": "OK",
+            "testset": "TESTS",
+            "passedTestCount": 26,
+            "timeConsumedMillis": 997,
+            "memoryConsumedBytes": 12902400
+        },
+        {
+            "id": 71779672,
+            "contestId": 1311,
+            "creationTimeSeconds": 1582556064,
+            "relativeTimeSeconds": 1164,
+            "problem": {
+                "contestId": 1311,
+                "index": "C",
+                "name": "Perform the Combo",
+                "type": "PROGRAMMING",
+                "tags": [
+                    "binary search",
+                    "data structures"
+                ]
+            },
+            "author": {
+                "contestId": 1311,
+                "members": [
+                    {
+                        "handle": "ieW_xelA"
+                    }
+                ],
+                "participantType": "CONTESTANT",
+                "ghost": false,
+                "startTimeSeconds": 1582554900
+            },
+            "programmingLanguage": "GNU C++11",
+            "verdict": "OK",
+            "testset": "TESTS",
+            "passedTestCount": 5,
+            "timeConsumedMillis": 405,
+            "memoryConsumedBytes": 1331200
+        },
+        {
+            "id": 71776262,
+            "contestId": 1311,
+            "creationTimeSeconds": 1582555623,
+            "relativeTimeSeconds": 723,
+            "problem": {
+                "contestId": 1311,
+                "index": "D",
+                "name": "Three Integers",
+                "type": "PROGRAMMING",
+                "tags": [
+                    "brute force",
+                    "math"
+                ]
+            },
+            "author": {
+                "contestId": 1311,
+                "members": [
+                    {
+                        "handle": "ieW_xelA"
+                    }
+                ],
+                "participantType": "CONTESTANT",
+                "ghost": false,
+                "startTimeSeconds": 1582554900
+            },
+            "programmingLanguage": "GNU C++11",
+            "verdict": "OK",
+            "testset": "TESTS",
+            "passedTestCount": 8,
+            "timeConsumedMillis": 467,
+            "memoryConsumedBytes": 0
+        },
+        {
+            "id": 71771938,
+            "contestId": 1311,
+            "creationTimeSeconds": 1582555226,
+            "relativeTimeSeconds": 326,
+            "problem": {
+                "contestId": 1311,
+                "index": "B",
+                "name": "WeirdSort",
+                "type": "PROGRAMMING",
+                "tags": [
+                    "sortings"
+                ]
+            },
+            "author": {
+                "contestId": 1311,
+                "members": [
+                    {
+                        "handle": "ieW_xelA"
+                    }
+                ],
+                "participantType": "CONTESTANT",
+                "ghost": false,
+                "startTimeSeconds": 1582554900
+            },
+            "programmingLanguage": "GNU C++11",
+            "verdict": "OK",
+            "testset": "TESTS",
+            "passedTestCount": 5,
+            "timeConsumedMillis": 31,
+            "memoryConsumedBytes": 0
+        },
+        {
+            "id": 71769824,
+            "contestId": 1311,
+            "creationTimeSeconds": 1582555023,
+            "relativeTimeSeconds": 123,
+            "problem": {
+                "contestId": 1311,
+                "index": "A",
+                "name": "Add Odd or Subtract Even",
+                "type": "PROGRAMMING",
+                "tags": [
+                    "math"
+                ]
+            },
+            "author": {
+                "contestId": 1311,
+                "members": [
+                    {
+                        "handle": "ieW_xelA"
+                    }
+                ],
+                "participantType": "CONTESTANT",
+                "ghost": false,
+                "startTimeSeconds": 1582554900
+            },
+            "programmingLanguage": "GNU C++11",
+            "verdict": "OK",
+            "testset": "TESTS",
+            "passedTestCount": 4,
+            "timeConsumedMillis": 62,
+            "memoryConsumedBytes": 0
+        },
+        {
+            "id": 71769793,
+            "contestId": 1311,
+            "creationTimeSeconds": 1582555009,
+            "relativeTimeSeconds": 109,
+            "problem": {
+                "contestId": 1311,
+                "index": "A",
+                "name": "Add Odd or Subtract Even",
+                "type": "PROGRAMMING",
+                "tags": [
+                    "math"
+                ]
+            },
+            "author": {
+                "contestId": 1311,
+                "members": [
+                    {
+                        "handle": "ieW_xelA"
+                    }
+                ],
+                "participantType": "CONTESTANT",
+                "ghost": false,
+                "startTimeSeconds": 1582554900
+            },
+            "programmingLanguage": "GNU C11",
+            "verdict": "COMPILATION_ERROR",
+            "testset": "TESTS",
+            "passedTestCount": 0,
+            "timeConsumedMillis": 0,
+            "memoryConsumedBytes": 0
+        }
+    ]
+}

@@ -18,14 +18,13 @@ int main() {
         }
     }
     int res = 0;
-    while (s.size() > 7) {
-        if (s.find("nineteen") == -1) {
-            break;
-        }
-        s.erase(s.find("nineteen"), 7);
+    while (let[0] > 2 && let[1] > 0 && let[2] > 2 && let[3] > 0) {
+        let[0] -= 2;
+        let[1]--;
+        let[2] -= 3;
+        let[3]--;
         res++;
     }
-    cout << max(min({(let[0] + let[0] / 3) / 3, let[1], let[2] / 3, let[3]}),
-                res);
+    cout << res;
     return 0;
 }
