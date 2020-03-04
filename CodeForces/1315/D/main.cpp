@@ -6,30 +6,40 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    vector<int> a(n), t(n);
-    map<int, vector<int> > mp;
+    vector<pair<int, int> > a(n);
     for (auto &i : a) {
-        cin >> i;
+        cin >> i.first;
     }
-    for (int i = 0; i < n; i++) {
-        cin >> t[i];
-        mp[a[i]].push_back(t[i]);
+    for (auto &i : a) {
+        cin >> i.second;
     }
-    for (auto i : mp) {
-        sort(i.second.begin(), i.second.end());
-    }
-    long long res = 0;
-    for (auto i : mp) {
-        int j = 0;
-        while (i.second.size() - 1 > j) {
-            res += i.second[j];
-            mp[i.first + 1].push_back(i.second[j]);
-            j++;
+    sort(a.begin(), a.end());
+    long long res = 0, sum = 0, last = a.front().first;
+    multiset<int> nums;
+    nums.insert(a.front().second);
+    sum = a.front().second;
+    int i = 1;
+    while (i < n) {
+        if (last != a[i].first) {
+            sum -= (*--nums.end());
+            res += sum;
+            nums.erase(--nums.end());
+            if (last + 1 != a[i].first) {
+                nums.clear();
+                sum = 0;
+            }
+            last = a[i].first;
         }
-        if (j != 0) {
-            sort(mp[i.first + 1].begin(), mp[i.first + 1].end());
-        }
+        nums.insert(a[i].second);
+        sum += a[i].second;
+        i++;
     }
+    int c = 1;
+    for (auto i : nums) {
+        res += c * i;
+        c++;
+    }
+    res -= (c - 1) * (*--nums.end());
     cout << res;
     return 0;
 }
