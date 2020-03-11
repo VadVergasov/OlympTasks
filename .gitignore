@@ -16,3 +16,5 @@ obj/
 *.7z
 *.tcs
 *.bin
+*.exp
+*.lib
