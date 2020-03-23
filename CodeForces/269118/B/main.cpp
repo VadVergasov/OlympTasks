@@ -80,24 +80,33 @@ int main() {
         string t;
         cin >> t;
         int l = 0, r = p.size() - 1;
-        bool res = false;
+        int left = -1, right = -1;
         while (l <= r) {
             int m = (l + r) >> 1;
             string found = s.substr(p[m], t.size());
-            if (found == t) {
-                cout << "Yes\n";
-                res = true;
-                break;
-            } else if (found > t) {
+            if (found > t) {
                 r = m - 1;
             } else {
                 l = m + 1;
             }
         }
-        if (res) {
-            continue;
+        right = l;
+        l = 0, r = p.size() - 1;
+        while (l <= r) {
+            int m = (l + r) >> 1;
+            string found = s.substr(p[m], t.size());
+            if (found >= t) {
+                left = m;
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
         }
-        cout << "No\n";
+        if (p[left] + t.size() < p.size() && s.substr(p[left], t.size()) == t) {
+            cout << right - left << "\n";
+        } else {
+            cout << "0\n";
+        }
     }
     return 0;
 }

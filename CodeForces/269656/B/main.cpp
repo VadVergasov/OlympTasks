@@ -34,8 +34,10 @@ void fast_sort(vector<pair<pair<int, int>, int> > &a) {
 }
 
 int main() {
-    string s;
-    cin >> s;
+    string s, t;
+    cin >> s >> t;
+    s += '#';
+    s += t;
     s += '$';
     vector<int> c(s.size()), p(s.size());
     vector<pair<char, int> > a(s.size());
@@ -74,30 +76,30 @@ int main() {
         }
         k++;
     }
-    int q;
-    cin >> q;
-    for (int i = 0; i < q; i++) {
-        string t;
-        cin >> t;
-        int l = 0, r = p.size() - 1;
-        bool res = false;
-        while (l <= r) {
-            int m = (l + r) >> 1;
-            string found = s.substr(p[m], t.size());
-            if (found == t) {
-                cout << "Yes\n";
-                res = true;
-                break;
-            } else if (found > t) {
-                r = m - 1;
-            } else {
-                l = m + 1;
-            }
-        }
-        if (res) {
+    vector<long long> lcp(p.size() - 1);
+    k = 0;
+    for (int i = 0; i < p.size() - 1; i++) {
+        int x = c[i];
+        if (x == 0) {
             continue;
         }
-        cout << "No\n";
+        int j = p[x - 1];
+        while (s[i + k] == s[j + k]) {
+            k++;
+        }
+        lcp[x - 1] = k;
+        k = max(k - 1, 0);
     }
+    long long res = 0, pos = -1;
+    for (int i = 0; i < p.size() - 1; i++) {
+        if (res < lcp[i] && ((p[i] < s.size() - t.size() &&
+                              p[i + 1] >= s.size() - t.size() - 1) ||
+                             (p[i + 1] < s.size() - t.size() &&
+                              p[i] >= s.size() - t.size() - 1))) {
+            res = lcp[i];
+            pos = i;
+        }
+    }
+    cout << s.substr(p[pos], res);
     return 0;
 }
