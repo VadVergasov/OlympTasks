@@ -18,3 +18,4 @@ obj/
 *.bin
 *.exp
 *.lib
+.cph/
