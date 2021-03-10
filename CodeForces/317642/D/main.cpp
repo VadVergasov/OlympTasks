@@ -14,30 +14,61 @@
 
 using namespace std;
 
-long long binpow(long long n, bitset<332193> p, long long mod) {
-    long long res = 1;
-    while (p != 0) {
-        if ((p & bitset<332193>(1)) == bitset<332193>(1)) {
-            res *= n;
-            res %= mod;
-        }
-        n *= n;
-        p >>= 1;
-        n %= mod;
+void print(__int128 x) {
+    if (x < 0) {
+        putchar('-');
+        x = -x;
     }
-    return res % mod;
+    if (x > 9) print(x / 10);
+    putchar(x % 10 + '0');
+}
+
+__int128 num(string s) {
+    __int128 res = 0, p = 1;
+    while (!s.empty()) {
+        res += (s.back() - '0') * p;
+        p *= 10;
+        s.pop_back();
+    }
+    return res;
+}
+
+__int128 mult(__int128 a, __int128 b, __int128 m) {
+    if (b <= 1) {
+        return a * b;
+    }
+    __int128 res = (2 * mult(a, b / (__int128)2, m)) % m;
+    if (b % 2 == 1) {
+        res += a;
+        res %= m;
+    }
+    return res;
+}
+
+__int128 binpow(__int128 n, __int128 p, __int128 m) {
+    __int128 res = 1;
+    while (p) {
+        if (p & 1) {
+            res = mult(n, res, m);
+            res %= m;
+        }
+        n = mult(n, n, m);
+        p >>= 1;
+        n %= m;
+    }
+    return res;
 }
 
 int main() {
-    long long x, z;
-    string y;
+    string x, y, z;
     cin >> x >> y >> z;
-    if (z == 2) {
-        cout << x % 2;
-        return 0;
+    __int128 a = num(x), b = num(z), res = 1;
+    for (int i = (int)y.size() - 1; i >= 0; i--) {
+        int cur = y[i] - '0';
+        res = mult(binpow(a, cur, b), res, b);
+        res %= b;
+        a = binpow(a, 10, b);
     }
-    string bits = "";
-    bitset<332193> p(y);
-    cout << binpow(x, p, z);
+    print(res);
     return 0;
 }
