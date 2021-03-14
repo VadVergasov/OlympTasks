@@ -14,17 +14,44 @@
 
 using namespace std;
 
+int get_parent(int a, vector<int> &p) {
+    if (p[a] == a) {
+        return a;
+    }
+    return p[a] = get_parent(p[a], p);
+}
+
+void unite(int a, int b, vector<int> &p, vector<int> &ranks) {
+    a = get_parent(a, p);
+    b = get_parent(b, p);
+    if (a != b) {
+        if (ranks[a] < ranks[b]) {
+            swap(a, b);
+        }
+        p[b] = a;
+        ranks[a]++;
+    }
+}
+
 int main() {
-    string s;
-    cin >> s;
-    long long res = 0;
-    for (int i = 0; i < (int)s.size(); i++) {
-        for (int j = i + 1; j < (int)s.size(); j++) {
-            if (s[i] > s[j]) {
-                res++;
-            }
+    int n, m;
+    cin >> n >> m;
+    vector<int> p(n), ranks(n, 1);
+    for (int i = 0; i < n; i++) {
+        p[i] = i;
+    }
+    for (int i = 0; i < m; i++) {
+        string s;
+        int a, b;
+        cin >> s >> a >> b;
+        a--;
+        b--;
+        if (s == "union") {
+            unite(a, b, p, ranks);
+        } else {
+            cout << ((get_parent(a, p) == get_parent(b, p)) ? "YES" : "NO")
+                 << '\n';
         }
     }
-    cout << res;
     return 0;
 }
