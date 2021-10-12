@@ -44,8 +44,12 @@ int main() {
         cout << "Enter the n to rotate: ";
     }
     cout << "Rotated:\n";
-    for (int i = 0; i < k - n; i++) {
-        swap(a[i], a[i + n]);
+    for (int j = 0; j < n; j++) {
+        int start = a[0];
+        for (int i = 0; i < k - 1; i++) {
+            a[i] = a[i + 1];
+        }
+        a[k - 1] = start;
     }
     for (int i = 0; i < k; i++) {
         cout << a[i] << " ";
