@@ -6,7 +6,8 @@
 bin/
 obj/
 .vscode
-*.exe
+.vs
+*.exe*
 *.i
 *.o
 *.in
@@ -19,3 +20,13 @@ obj/
 *.exp
 *.lib
 .cph/
+*.lib
+*.dll*
+*.filters
+*.user
+*.pdb
+*.idb
+*.*log
+*.obj
+*.pch
+*.ilk
