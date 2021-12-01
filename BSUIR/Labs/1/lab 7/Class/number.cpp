@@ -106,10 +106,7 @@ void Number::checkBase(unsigned short base) const {
     assert(base > 1 && base < 37);
 }
 
-Number Number::getInstance() const {
-    Number res(getValue(), base, getSign());
-    return res;
-}
+Number Number::getInstance() const { return *this; }
 
 Number Number::operator+(const Number &num) const {
     assert(base == num.base);
