@@ -1,5 +1,5 @@
 // Main code for this task.
-// Copyright (C) 2021  Vadim Vergasov aka VadVergasov
+// Copyright (C) 2021  Vadzim Verhasau aka VadVergasov
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -36,7 +36,8 @@ struct dinic {
     vector<int> d, ptr;
 
     void prepare(int n, int s, int t) {
-        this->s = s, this->t = t; this->n = n;
+        this->s = s, this->t = t;
+        this->n = n;
         gr.resize(n);
         d.resize(n);
         ptr.resize(n);
@@ -92,11 +93,14 @@ int main() {
     vector<pair<pair<int, int>, string> > v(n);
     for (int i = 0; i < n; ++i) {
         cin >> v[i].fi.fi >> v[i].fi.se;
-        cin >> v[i].se; --v[i].fi.fi, --v[i].fi.se;
+        cin >> v[i].se;
+        --v[i].fi.fi, --v[i].fi.se;
     }
 
-    int ver = 26 + m + 100; int s = ver - 5, t = ver - 6;
-    dinic d; d.prepare(ver, s, t);
+    int ver = 26 + m + 100;
+    int s = ver - 5, t = ver - 6;
+    dinic d;
+    d.prepare(ver, s, t);
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < v[i].se.size(); ++j) {

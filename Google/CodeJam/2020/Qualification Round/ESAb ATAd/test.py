@@ -1,6 +1,6 @@
 """
 Main code for this task.
-Copyright (C) 2021  Vadim Vergasov aka VadVergasov
+Copyright (C) 2021  Vadzim Verhasau aka VadVergasov
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -76,16 +76,16 @@ class JudgeSingleCase(object):
     def _ParseContestantInput(self, response):
         """Parses contestant's input.
 
-    Parses contestant's input, which should be a number between 1 and self.len,
-    or a string of length exactly self.len which contains only 0 and 1.
+        Parses contestant's input, which should be a number between 1 and self.len,
+        or a string of length exactly self.len which contains only 0 and 1.
 
-    Args:
-      response: (str) one-line input given by the contestant.
+        Args:
+          response: (str) one-line input given by the contestant.
 
-    Returns:
-      A int or str of the contestant's input.
-      Also, an error string if input is invalid, otherwise None.
-    """
+        Returns:
+          A int or str of the contestant's input.
+          Also, an error string if input is invalid, otherwise None.
+        """
         if ("\n" in response) or ("\r" in response):
             return None, _ERROR_MSG_EXTRA_NEW_LINES
 
@@ -105,13 +105,13 @@ class JudgeSingleCase(object):
     def _ReadContestantInput(self):
         """Reads contestant's input.
 
-    Reads contestant's input,  which should be a number between 1 and self.len,
-    or a string of length exactly self.len which contains only 0 and 1.
+        Reads contestant's input,  which should be a number between 1 and self.len,
+        or a string of length exactly self.len which contains only 0 and 1.
 
-    Returns:
-      A int or str of the contestant's input.
-      Also, an error string if input is invalid, otherwise None.
-    """
+        Returns:
+          A int or str of the contestant's input.
+          Also, an error string if input is invalid, otherwise None.
+        """
         try:
             contestant_input = self.io.ReadInput()
         except Exception:
@@ -122,10 +122,10 @@ class JudgeSingleCase(object):
     def Judge(self):
         """Judges one single case; should only be called once per test case.
 
-    Returns:
-      An error string if an I/O rule was violated or the answer was incorrect,
-      otherwise None.
-    """
+        Returns:
+          An error string if an I/O rule was violated or the answer was incorrect,
+          otherwise None.
+        """
         for i in range(MAX_QUERIES + 1):
             contestant_input, err = self._ReadContestantInput()
             if err is not None:
@@ -179,9 +179,9 @@ def GenerateInputs(b):
 def JudgeAllCases(test_number, io):
     """Sends input to contestant and judges contestant output.
 
-  Returns:
-    An error string, or None if the attempt was correct.
-  """
+    Returns:
+      An error string, or None if the attempt was correct.
+    """
     b = (10, 20, 100)[test_number]
     inputs = GenerateInputs(b)
 
@@ -226,4 +226,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

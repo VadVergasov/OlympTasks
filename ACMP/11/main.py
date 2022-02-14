@@ -1,6 +1,6 @@
 """
 Main code for this task.
-Copyright (C) 2021  Vadim Vergasov aka VadVergasov
+Copyright (C) 2021  Vadzim Verhasau aka VadVergasov
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -34,4 +34,3 @@ for i in range(2 * k, n + k):
 
 o = open("OUTPUT.TXT", "w")
 o.write(str(a[len(a) - 1]))
-

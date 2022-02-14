@@ -1,6 +1,6 @@
 """
 Main code for this task.
-Copyright (C) 2021  Vadim Vergasov aka VadVergasov
+Copyright (C) 2021  Vadzim Verhasau aka VadVergasov
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -123,4 +123,3 @@ if t_judge.error_message:
 print("Solution return code:", t_sol.return_code)
 if t_judge.error_message:
     print("Solution error message:", t_sol.error_message)
-
