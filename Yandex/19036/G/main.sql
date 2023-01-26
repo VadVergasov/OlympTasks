@@ -1,0 +1,2 @@
+SELECT COUNT(*) AS res
+FROM tmp;
